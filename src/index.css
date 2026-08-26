@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #FAF8F5;
+    color: #3E3E3E;
+    letter-spacing: -0.01em;
+  }
+
+  .font-serif {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #6D4C41;
+    font-weight: 600;
+  }
+}
+
+/* Custom scrollbar for modern subtle aesthetic */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #E8DCD4;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #D4C3B8;
+}
+
+/* Minimalist Clean Utilities */
+.minimal-card {
+  background-color: #FFFFFF;
+  border: 1px solid #EFE8E1;
+  border-radius: 1.25rem;
+}
+
+.minimal-card-hover {
+  background-color: #FFFFFF;
+  border: 1px solid #EFE8E1;
+  border-radius: 1.25rem;
+  transition: all 0.2s ease;
+}
+.minimal-card-hover:hover {
+  border-color: #E2CEBE;
+  box-shadow: 0 4px 16px -4px rgba(109, 76, 65, 0.05);
+}
+
+/* Safe area insets for iOS devices */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 1rem);
+}
+.pt-safe {
+  padding-top: env(safe-area-inset-top, 1rem);
+}
+
+

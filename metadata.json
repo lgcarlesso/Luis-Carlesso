@@ -1,0 +1,6 @@
+{
+  "name": "L&A",
+  "description": "Aplicativo PWA para clínicas de estética com gestão de clientes, histórico de procedimentos, alerta inteligente de reconquista, controle de caixa financeiro em tempo real e sincronização multi-aparelhos.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
