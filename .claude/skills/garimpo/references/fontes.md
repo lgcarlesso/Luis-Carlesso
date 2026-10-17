@@ -70,6 +70,10 @@ Consulte na hora — mudam com frequência.
 - `openrouter.ai/rankings` — uso real por tipo de tarefa.
 - `swebench.com` — agentes de programação em tarefas reais.
 - Hugging Face Open LLM Leaderboard — modelos open-source.
+- Hugging Face Open ASR Leaderboard — transcrição de fala (Whisper e afins); confira se cobre o idioma da tarefa.
+- TTS Arena (Hugging Face) e a arena de voz do artificialanalysis.ai — síntese de voz.
+
+Alguns desses sites podem estar bloqueados no ambiente. Se nenhum abrir, busque "<tarefa> benchmark <ano atual>" no WebSearch e cite a data do dado.
 
 ## 5. Comunidade
 

@@ -32,7 +32,7 @@ O melhor recurso é o que já está instalado. Se estas ferramentas existirem no
 - `ListSkills`, `ListConnectors`, `ListPlugins` → o que o usuário já tem (✅)
 - `SearchMcpRegistry`, `SearchPlugins`, `SearchSkills` → o que dá para instalar com um clique (➕)
 
-Se não existirem, siga em frente sem mencionar.
+Se não existirem, siga em frente sem mencionar. Se `ListPlugins` voltar vazio, não conclua que não há nada: confira também a lista de skills disponíveis na própria sessão (nomes como `plugin:skill` indicam plugin instalado) — senão você marca como ➕ algo que o usuário já tem.
 
 ## 3. GitHub — a fonte principal
 
@@ -43,7 +43,11 @@ Pesquise em inglês (a maior parte do GitHub é em inglês), uma busca por categ
 3. `gh search repos` ou `api.github.com/search/repositories`, se acessíveis.
 4. `WebSearch` com `site:github.com <termos>`.
 
-Qualificadores úteis na query: `stars:>50`, `pushed:>AAAA-MM-DD` (12 meses antes de hoje), `topic:mcp-server`, `language:python`. Busca de código (`filename:SKILL.md`) exige login no github.com — para isso use WebSearch ou awesome-lists.
+Qualificadores úteis na query: `stars:>50`, `pushed:>AAAA-MM-DD` (12 meses antes de hoje), `topic:mcp-server`, `language:python`. O filtro de data esconde clássicos estáveis, então rode ao menos uma variação sem ele. Busca de código (`filename:SKILL.md`) exige login no github.com — para isso use WebSearch ou awesome-lists.
+
+Dicas práticas:
+- A busca do github.com devolve erro 429 se chamada em rajada. Faça as buscas no GitHub **em sequência**; paralelize só WebSearch e leitura de páginas.
+- A página de busca já mostra "Updated X ago" — é o jeito mais barato de saber a atualização. A página do repo não mostra a data do último commit; se precisar, use `github.com/<dono>/<repo>/commits`.
 
 Depois, consulte as **awesome-lists** do tema: muitas vezes alguém já fez a curadoria. Elas são enormes — busque o README cru (`raw.githubusercontent.com/<dono>/<repo>/main/README.md`) com um prompt pedindo só a seção relevante.
 
@@ -51,11 +55,11 @@ Pontos de partida, exemplos de queries por categoria, diretórios de MCP e ranki
 
 ## 4. Validação na comunidade
 
-Estrela mede popularidade, não qualidade de uso. Para os 2-3 finalistas de cada categoria (não para todos os itens), procure opinião real: Reddit, Hacker News, comparativos "X vs Y", issues abertas no próprio repo. Para **modelos de IA**, consulte os rankings atuais listados em `references/fontes.md` — o "melhor modelo" muda todo mês, então nunca responda de memória.
+Estrela mede popularidade, não qualidade de uso. Para os 2-3 finalistas de cada categoria (não para todos os itens), procure opinião real: Reddit, Hacker News, comparativos "X vs Y", issues abertas no próprio repo. Para **modelos de IA**, consulte os rankings atuais listados em `references/fontes.md` — o "melhor modelo" muda todo mês, então nunca responda de memória. Se não achar ranking confiável para o caso (idioma específico, nicho), diga isso e recomende um teste A/B rápido com material real do usuário em vez de chutar.
 
 ## 5. Verificar e ranquear
 
-Só recomende o que você abriu nesta sessão. Abra a página/README de cada finalista e confirme: existe, faz o que você acha que faz, última atualização, licença. Descarte repositórios arquivados, sem commit há mais de 12 meses (a menos que seja um clássico estável — diga isso), demos de brinquedo e qualquer coisa suspeita.
+Só recomende o que você abriu nesta sessão. Para plugins de marketplace sem código público, a ficha do marketplace conta como aberta — mas marque ⚠️ "código não inspecionável". Abra a página/README de cada finalista e confirme: existe, faz o que você acha que faz, última atualização, licença. Descarte repositórios arquivados, sem commit há mais de 12 meses (a menos que seja um clássico estável — diga isso), demos de brinquedo e qualquer coisa suspeita.
 
 Critérios, do mais ao menos importante:
 
@@ -67,7 +71,11 @@ Critérios, do mais ao menos importante:
 
 Dê uma nota de 1 a 10 por item refletindo esse peso.
 
-**Segurança:** servidores MCP, plugins e scripts executam código com acesso aos dados do usuário. Marque com ⚠️ itens de autores desconhecidos que pedem permissões amplas (arquivos, tokens, e-mail). Durante o garimpo, não instale, clone nem execute nada — isso só acontece depois que o usuário escolher.
+**Segurança e privacidade:** servidores MCP, plugins e scripts executam código com acesso aos dados do usuário. Marque com ⚠️:
+- itens de autores desconhecidos que pedem permissões amplas (arquivos, tokens, e-mail) ou instalam com `curl | bash`;
+- ferramentas que enviam os dados do usuário para APIs de terceiros (transcrição, visão, LLM na nuvem). Quando a tarefa envolve dado sensível — saúde, pacientes, clientes, finanças, documentos pessoais — isso pesa mais que estrelas: prefira a alternativa local e diga por quê.
+
+Durante o garimpo, não instale, clone nem execute nada — isso só acontece depois que o usuário escolher.
 
 ## 6. Modelo de IA
 
@@ -85,7 +93,12 @@ Sintetize um prompt pronto para colar, combinando as melhores práticas dos prom
 
 ## 8. Entrega
 
-Use este formato. Omita seções que não se aplicam (não escreva "nenhum encontrado" — só tire a seção). Máximo 5 itens por categoria, idealmente 3. Todo nome é um link. Se não conseguir confirmar estrelas ou data, escreva `?` em vez de estimar.
+Use este formato. Omita seções que não se aplicam (não escreva "nenhum encontrado" — só tire a seção). Máximo 5 itens por categoria, idealmente 3. O Resumo deve responder sozinho "o que eu uso?" — quem ler só ele já sabe o caminho. "Por que usar" cabe em uma ou duas frases.
+
+Regras das tabelas:
+- Todo item com página pública tem link. Itens da conta ou de marketplace sem página pública ficam sem link, com a origem entre parênteses (ex.: "(sua skill)", "(Directory)").
+- ⭐ e Atualizado: `—` quando não se aplica (skill da conta, conector); `?` quando existe mas não deu para confirmar. Nunca estime.
+- Na tabela de prompts, se nenhum item for repositório, use só `# | Nome | Nota | Por que usar`.
 
 ````markdown
 # ⛏️ Garimpo: <tarefa em poucas palavras>
@@ -133,6 +146,6 @@ Termine perguntando se o usuário quer executar, com opções concretas tiradas 
 
 ## Eficiência
 
-Se o ambiente tiver subagentes (ferramenta `Agent`), divida a pesquisa em frentes paralelas — por exemplo: (1) repositórios/templates, (2) MCPs, plugins e skills, (3) prompts e modelos — e peça a cada uma só os finalistas com link, estrelas, data e motivo. Isso deixa o contexto limpo e acelera. Sem subagentes, faça em sequência.
+Se o ambiente tiver subagentes (ferramenta `Agent`), divida a pesquisa em frentes paralelas — por exemplo: (1) repositórios/templates, (2) MCPs, plugins e skills, (3) prompts e modelos — e peça a cada uma só os finalistas com link, estrelas, data e motivo. Isso deixa o contexto limpo e acelera; só cuide para que as buscas no github.com não disparem todas ao mesmo tempo (erro 429). Sem subagentes, faça em sequência.
 
 Mire em algo entre 15 e 30 buscas no total. O objetivo é um kit confiável, não uma enciclopédia.
