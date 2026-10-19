@@ -1,19 +1,25 @@
 ---
 name: garimpo
-description: Garimpa no GitHub (fonte principal), nos marketplaces do Claude, em awesome-lists e na comunidade os melhores recursos para executar uma tarefa — repositórios/templates, prompts, conectores MCP, plugins, skills, subagentes e o modelo de IA ideal — ranqueados por avaliação (estrelas, manutenção, confiança, aderência) e entrega um kit pronto com plano de ação e prompt mestre — o texto após /garimpo é o tema a pesquisar, então a skill entrega o kit e só executa depois que o usuário escolher. Use sempre que o usuário digitar /garimpo, ou pedir coisas como "pesquise as melhores ferramentas/prompts/MCPs/plugins para X", "o que já existe no GitHub para fazer X", "qual o melhor kit, stack ou modelo para X", "antes de começar, veja o que tem de melhor", mesmo sem usar a palavra garimpo.
+description: Garimpa no GitHub (fonte principal), nos marketplaces do Claude, em awesome-lists e na comunidade os melhores recursos para executar uma tarefa — repositórios/templates, prompts, conectores MCP, plugins, skills, subagentes e o modelo de IA ideal — ranqueados por avaliação (estrelas, manutenção, confiança, aderência) — e usa o melhor que achou para executar a tarefa no projeto/conversa aberta (prompt mestre, ferramentas já disponíveis), pedindo permissão só para instalar algo novo; se o pedido for só uma pergunta, entrega o kit pesquisado. Use sempre que o usuário digitar /garimpo, ou pedir coisas como "pesquise as melhores ferramentas/prompts/MCPs/plugins para X", "o que já existe no GitHub para fazer X", "qual o melhor kit, stack ou modelo para X", "antes de começar, veja o que tem de melhor", mesmo sem usar a palavra garimpo.
 ---
 
 # Garimpo
 
-Antes de construir qualquer coisa, descobrir o que de melhor já existe — para não reinventar a roda e começar do ponto mais alto possível. O pedido vem logo depois do comando: `/garimpo <o que eu quero fazer>`. Responda sempre em português.
+Pegar o pedido e o que está aberto (projeto, arquivos, conversa, prompt já escrito), descobrir o que de melhor já existe — GitHub primeiro — e **usar isso para fazer o trabalho do melhor jeito possível**, em vez de fazer do jeito de sempre. O pedido vem logo depois do comando: `/garimpo <o que eu quero>`. Responda sempre em português.
 
-**O texto depois de `/garimpo` é o tema da pesquisa, não uma ordem para executar.** "/garimpo criar o site X" quer dizer "pesquise o melhor para criar o site X" — mesmo que soe como instrução e mesmo que a conversa já tenha esse trabalho em andamento. A entrega desta skill é sempre o relatório da seção 8; executar só acontece depois que o usuário escolher (seção 9). Se já existe trabalho em andamento sobre o tema, use-o como contexto e foque o garimpo no que melhoraria o que já existe.
+**Nunca pule a pesquisa.** Mesmo que já exista trabalho em andamento e o pedido pareça simples de executar direto, o valor desta skill está justamente em trazer de fora o que é melhor do que você faria sozinho. Executar sem garimpar é o erro principal a evitar.
+
+Dois modos, decididos pelo jeito do pedido:
+- **Executar** (padrão) — o pedido é uma tarefa: "criar", "melhorar", "fazer", "montar"… → pesquisa → kit curto → aplica o melhor e executa (seções 8 e 9).
+- **Só pesquisar** — o pedido é uma pergunta: "quais as melhores…", "o que existe para…", "compare…" → pesquisa → relatório completo → pergunta o que fazer.
 
 O usuário quer **qualidade com objetividade**: três itens excelentes valem mais que quinze medianos. Cada item recomendado precisa ter um motivo concreto para estar ali, e cada número (estrelas, data) precisa ser real.
 
-## 1. Entender o pedido
+## 1. Ler o contexto e entender o pedido
 
-Extraia do texto: objetivo final, tipo de entrega (app, automação, conteúdo, vídeo, análise, site...), plataforma/stack se mencionada e restrições (custo, nível técnico).
+Antes de pesquisar, olhe o que já está aberto: arquivos do projeto, a conversa até aqui, instruções do projeto, o que já foi construído e decisões já tomadas (marca, cores, stack, preferências). O garimpo é sob medida: pesquise o que **melhora o que já existe**, sem propor recomeçar do zero a menos que o atual seja realmente o problema.
+
+Extraia do pedido: objetivo final, tipo de entrega (app, automação, conteúdo, vídeo, análise, site...), plataforma/stack se mencionada e restrições (custo, nível técnico).
 
 Depois decida quais categorias importam — nem todo pedido precisa de todas:
 
@@ -77,7 +83,7 @@ Dê uma nota de 1 a 10 por item refletindo esse peso.
 - itens de autores desconhecidos que pedem permissões amplas (arquivos, tokens, e-mail) ou instalam com `curl | bash`;
 - ferramentas que enviam os dados do usuário para APIs de terceiros (transcrição, visão, LLM na nuvem). Quando a tarefa envolve dado sensível — saúde, pacientes, clientes, finanças, documentos pessoais — isso pesa mais que estrelas: prefira a alternativa local e diga por quê.
 
-Durante o garimpo, não instale, clone nem execute nada — isso só acontece depois que o usuário escolher.
+Durante a pesquisa, não instale, clone nem rode nada de terceiros — a seção 9 diz o que pode ser usado direto e o que precisa de permissão.
 
 ## 6. Modelo de IA
 
@@ -91,11 +97,26 @@ Para imagem, vídeo, voz ou música, recomende o modelo especializado mais bem a
 
 ## 7. Prompt mestre
 
-Sintetize um prompt pronto para colar, combinando as melhores práticas dos prompts encontrados: papel, contexto, passos, formato de saída, restrições e um exemplo quando ajudar. Diga em quais fontes ele se baseou. É a parte que o usuário vai usar imediatamente, então capriche.
+Sintetize um prompt combinando as melhores práticas dos prompts encontrados com o contexto do projeto: papel, contexto, passos, formato de saída, restrições e um exemplo quando ajudar. Diga em quais fontes ele se baseou. No modo executar, **este é o prompt que você mesmo vai seguir** para fazer a tarefa — então capriche; ele também fica salvo no kit para o usuário reusar.
 
 ## 8. Entrega
 
-Use este formato. Omita seções que não se aplicam (não escreva "nenhum encontrado" — só tire a seção). Máximo 5 itens por categoria, idealmente 3. O Resumo deve responder sozinho "o que eu uso?" — quem ler só ele já sabe o caminho. "Por que usar" cabe em uma ou duas frases.
+**Modo executar:** mostre um kit curto antes de começar — o usuário precisa ver o que está sendo usado, mas não precisa de um relatório longo para isso:
+
+````markdown
+# ⛏️ Garimpo: <tarefa>
+**Vou usar agora:** <itens já disponíveis ou aplicáveis direto — prompt mestre, skills/conectores da conta, técnicas/bibliotecas achadas — cada um com 1 linha de porquê e link>
+**Vale instalar:** <itens novos que melhorariam o resultado, com status ➕/🛠️ — omita se não houver>
+**Modelo:** <qual e por quê, 1 linha>
+**Prompt mestre** (o que vou seguir — copie para reusar):
+```text
+<prompt>
+```
+````
+
+Depois disso, siga para a seção 9. Se o usuário pedir o relatório completo, use o formato do modo pesquisar.
+
+**Modo pesquisar:** use este formato. Omita seções que não se aplicam (não escreva "nenhum encontrado" — só tire a seção). Máximo 5 itens por categoria, idealmente 3. O Resumo deve responder sozinho "o que eu uso?" — quem ler só ele já sabe o caminho. "Por que usar" cabe em uma ou duas frases.
 
 Regras das tabelas:
 - Todo item com página pública tem link. Itens da conta ou de marketplace sem página pública ficam sem link, com a origem entre parênteses (ex.: "(sua skill)", "(Directory)").
@@ -142,9 +163,23 @@ Baseado em: <links>
 **Fontes:** <links consultados>
 ````
 
-## 9. Próximo passo
+## 9. Aplicar e executar
 
-Termine perguntando se o usuário quer executar, com opções concretas tiradas do próprio kit — por exemplo: "Instalar os conectores X e Y", "Clonar o template Z e começar", "Executar a tarefa agora com o prompt mestre", "Aprofundar a categoria W". Use `AskUserQuestion` se existir; senão, liste as opções numeradas. Não execute nada antes da resposta.
+**Modo executar.** Use direto, sem perguntar — é para isso que o usuário chamou a skill:
+- o prompt mestre, como suas instruções para a tarefa;
+- skills, plugins e conectores que já estão na conta (✅);
+- técnicas, padrões e bibliotecas conhecidas que você achou (ex.: uma biblioteca de animação via npm/CDN num site), aplicadas dentro do projeto.
+
+Pergunte antes — numa única pergunta, com `AskUserQuestion` se existir — só o que tem custo, risco ou não se desfaz:
+- instalar ou conectar algo novo (MCP, plugin, skill) — exige ação do usuário de qualquer forma;
+- clonar repositório ou rodar script de terceiros;
+- enviar dados sensíveis para serviço de terceiros;
+- publicar ou enviar algo para fora (site no ar, post, e-mail);
+- apagar ou refazer do zero algo que já existe.
+
+Se nada disso for necessário, execute logo depois do kit. Se o usuário recusar uma instalação, siga com o que já está disponível. Ao terminar, feche com 2-3 linhas: o que do garimpo foi aplicado e o que ficou para depois (e por quê).
+
+**Modo pesquisar.** Termine perguntando o que fazer, com opções concretas tiradas do kit — por exemplo: "Executar agora com o prompt mestre", "Instalar os conectores X e Y", "Clonar o template Z", "Aprofundar a categoria W". Use `AskUserQuestion` se existir; senão, liste as opções numeradas.
 
 ## Eficiência
 
