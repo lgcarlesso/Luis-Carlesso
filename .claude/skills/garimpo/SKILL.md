@@ -1,19 +1,26 @@
 ---
 name: garimpo
-description: Garimpa no GitHub (fonte principal), nos marketplaces do Claude, em awesome-lists e na comunidade os melhores recursos para executar uma tarefa — repositórios/templates, prompts, conectores MCP, plugins, skills, subagentes e o modelo de IA ideal — ranqueados por avaliação (estrelas, manutenção, confiança, aderência) — e usa o melhor que achou para executar a tarefa no projeto/conversa aberta (prompt mestre, ferramentas já disponíveis), pedindo permissão só para instalar algo novo; se o pedido for só uma pergunta, entrega o kit pesquisado. Use sempre que o usuário digitar /garimpo, ou pedir coisas como "pesquise as melhores ferramentas/prompts/MCPs/plugins para X", "o que já existe no GitHub para fazer X", "qual o melhor kit, stack ou modelo para X", "antes de começar, veja o que tem de melhor", mesmo sem usar a palavra garimpo.
+description: Pesquisa no GitHub (fonte principal), marketplaces do Claude, awesome-lists e comunidade os melhores prompts, MCPs/conectores, plugins, skills, templates e o modelo de IA ideal para uma tarefa, e depois USA o melhor achado para executá-la no projeto aberto. Acione sempre que o usuário digitar /garimpo ou pedir "pesquise as melhores ferramentas/prompts/MCPs para X", "o que existe no GitHub para X", "melhor kit/stack/modelo para X", "veja o que tem de melhor antes de começar". A pesquisa é obrigatória e vem ANTES de qualquer edição, mesmo que o projeto já tenha trabalho em andamento ou instruções próprias.
 ---
 
 # Garimpo
 
-Pegar o pedido e o que está aberto (projeto, arquivos, conversa, prompt já escrito), descobrir o que de melhor já existe — GitHub primeiro — e **usar isso para fazer o trabalho do melhor jeito possível**, em vez de fazer do jeito de sempre. O pedido vem logo depois do comando: `/garimpo <o que eu quero>`. Responda sempre em português.
+Ler o que está aberto (projeto, arquivos, conversa), achar o melhor que já existe — GitHub primeiro — e **usar isso para fazer o trabalho melhor do que você faria sozinho**. Pedido: `/garimpo <o que eu quero>`. Responda em português.
 
-**Nunca pule a pesquisa.** Mesmo que já exista trabalho em andamento e o pedido pareça simples de executar direto, o valor desta skill está justamente em trazer de fora o que é melhor do que você faria sozinho. Executar sem garimpar é o erro principal a evitar.
+## ⛔ Trava: pesquisar antes de agir
 
-Dois modos, decididos pelo jeito do pedido:
-- **Executar** (padrão) — o pedido é uma tarefa: "criar", "melhorar", "fazer", "montar"… → pesquisa → kit curto → aplica o melhor e executa (seções 8 e 9).
-- **Só pesquisar** — o pedido é uma pergunta: "quais as melhores…", "o que existe para…", "compare…" → pesquisa → relatório completo → pergunta o que fazer.
+Esta é a regra que mais importa. O valor da skill está em trazer de fora o que é melhor; se você for direto executar, ela não serviu para nada.
 
-O usuário quer **qualidade com objetividade**: três itens excelentes valem mais que quinze medianos. Cada item recomendado precisa ter um motivo concreto para estar ali, e cada número (estrelas, data) precisa ser real.
+1. **Primeira ação ao ser chamada:** anuncie "⛏️ Garimpando…" e crie uma lista de passos que **comece por pesquisa** (ex.: Ler contexto → Pesquisar GitHub → Mostrar kit → Executar). Não comece por "Ler o site atual" ou "Editar".
+2. **Proibido editar, criar arquivos ou rodar a tarefa** antes de mostrar o kit (seção 8). Projeto com trabalho em andamento, instruções próprias ou pedido que "parece simples" **não dispensam** a pesquisa — só mudam o foco dela (melhorar o que existe).
+3. **Sem ferramenta de busca** (WebFetch/WebSearch ausentes ou bloqueadas)? Diga isso logo na primeira mensagem e peça ao usuário para liberar ou colar links. Não siga em silêncio e não finja que pesquisou.
+4. **Antes de executar, confira:** abri pelo menos 3 páginas externas (GitHub/diretórios) nesta chamada? Mostrei o kit? Se não, volte.
+
+Dois modos, pelo jeito do pedido:
+- **Executar** (padrão) — "criar, melhorar, fazer, montar…": pesquisa → kit curto → aplica e executa.
+- **Só pesquisar** — pergunta ("quais as melhores…", "o que existe para…", "compare…"): pesquisa → relatório completo → pergunta o que fazer.
+
+Qualidade com objetividade: três itens excelentes valem mais que quinze medianos; cada item tem motivo concreto; estrelas e datas são reais.
 
 ## 1. Ler o contexto e entender o pedido
 
@@ -114,7 +121,7 @@ Sintetize um prompt combinando as melhores práticas dos prompts encontrados com
 ```
 ````
 
-Depois disso, siga para a seção 9. Se o usuário pedir o relatório completo, use o formato do modo pesquisar.
+O kit aparece na mesma resposta, **antes** de qualquer edição; depois siga para a seção 9. Se o usuário pedir o relatório completo, use o formato do modo pesquisar.
 
 **Modo pesquisar:** use este formato. Omita seções que não se aplicam (não escreva "nenhum encontrado" — só tire a seção). Máximo 5 itens por categoria, idealmente 3. O Resumo deve responder sozinho "o que eu uso?" — quem ler só ele já sabe o caminho. "Por que usar" cabe em uma ou duas frases.
 
