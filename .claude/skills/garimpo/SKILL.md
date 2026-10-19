@@ -14,7 +14,8 @@ Esta é a regra que mais importa. O valor da skill está em trazer de fora o que
 1. **Primeira ação ao ser chamada:** anuncie "⛏️ Garimpando…" e crie uma lista de passos que **comece por pesquisa** (ex.: Ler contexto → Pesquisar GitHub → Mostrar kit → Executar). Não comece por "Ler o site atual" ou "Editar".
 2. **Proibido editar, criar arquivos ou rodar a tarefa** antes de mostrar o kit (seção 8). Projeto com trabalho em andamento, instruções próprias ou pedido que "parece simples" **não dispensam** a pesquisa — só mudam o foco dela (melhorar o que existe).
 3. **Sem ferramenta de busca** (WebFetch/WebSearch ausentes ou bloqueadas)? Diga isso logo na primeira mensagem e peça ao usuário para liberar ou colar links. Não siga em silêncio e não finja que pesquisou.
-4. **Antes de executar, confira:** abri pelo menos 3 páginas externas (GitHub/diretórios) nesta chamada? Mostrei o kit? Se não, volte.
+4. **Antes de executar, confira:** abri pelo menos 3 páginas externas (GitHub/diretórios) nesta chamada? Mostrei o kit? Se não, volte. Ler `fontes.md` e os arquivos do projeto não conta como pesquisa. Esse é o mínimo; a seção 5 vale para cada item que você **recomendar** (abrir a página dele). Em tarefa pequena, 5–10 buscas bastam; 15–30 é teto para pedidos grandes.
+5. **Ordem:** o kit é texto na resposta, seguido das edições no mesmo turno — não precisa esperar o usuário, mas precisa aparecer antes da primeira edição.
 
 Dois modos, pelo jeito do pedido:
 - **Executar** (padrão) — "criar, melhorar, fazer, montar…": pesquisa → kit curto → aplica e executa.
@@ -74,7 +75,7 @@ Estrela mede popularidade, não qualidade de uso. Para os 2-3 finalistas de cada
 
 ## 5. Verificar e ranquear
 
-Só recomende o que você abriu nesta sessão. Para plugins de marketplace sem código público, a ficha do marketplace conta como aberta — mas marque ⚠️ "código não inspecionável". Abra a página/README de cada finalista e confirme: existe, faz o que você acha que faz, última atualização, licença. Descarte repositórios arquivados, sem commit há mais de 12 meses (a menos que seja um clássico estável — diga isso), demos de brinquedo e qualquer coisa suspeita.
+Só recomende o que você abriu nesta sessão. Para plugins de marketplace sem código público, a ficha do marketplace conta como aberta — mas marque ⚠️ "código não inspecionável". Abra a página/README de cada finalista e confirme: existe, faz o que você acha que faz, última atualização, licença. Versões, estrelas e datas vêm da página aberta; se não confirmou, escreva `?` ou abra a página do pacote antes de usar. Descarte repositórios arquivados, sem commit há mais de 12 meses (a menos que seja um clássico estável — diga isso), demos de brinquedo e qualquer coisa suspeita.
 
 Critérios, do mais ao menos importante:
 
@@ -175,7 +176,7 @@ Baseado em: <links>
 **Modo executar.** Use direto, sem perguntar — é para isso que o usuário chamou a skill:
 - o prompt mestre, como suas instruções para a tarefa;
 - skills, plugins e conectores que já estão na conta (✅);
-- técnicas, padrões e bibliotecas conhecidas que você achou (ex.: uma biblioteca de animação via npm/CDN num site), aplicadas dentro do projeto.
+- técnicas, padrões e bibliotecas que você achou e abriu (ex.: uma biblioteca de animação carregada por CDN num site), aplicadas dentro do projeto. Bibliotecas de front-end populares e mantidas, com **versão fixa confirmada na página do repositório ou do pacote** (nunca de memória), são parte do trabalho — isso é diferente de rodar scripts/instaladores de terceiros na máquina do usuário, que exige permissão.
 
 Pergunte antes — numa única pergunta, com `AskUserQuestion` se existir — só o que tem custo, risco ou não se desfaz:
 - instalar ou conectar algo novo (MCP, plugin, skill) — exige ação do usuário de qualquer forma;
@@ -192,4 +193,4 @@ Se nada disso for necessário, execute logo depois do kit. Se o usuário recusar
 
 Se o ambiente tiver subagentes (ferramenta `Agent`), divida a pesquisa em frentes paralelas — por exemplo: (1) repositórios/templates, (2) MCPs, plugins e skills, (3) prompts e modelos — e peça a cada uma só os finalistas com link, estrelas, data e motivo. Isso deixa o contexto limpo e acelera; só cuide para que as buscas no github.com não disparem todas ao mesmo tempo (erro 429). Sem subagentes, faça em sequência.
 
-Mire em algo entre 15 e 30 buscas no total. O objetivo é um kit confiável, não uma enciclopédia.
+Pedidos grandes: até 15–30 buscas; pequenos: 5–10. O objetivo é um kit confiável, não uma enciclopédia.
