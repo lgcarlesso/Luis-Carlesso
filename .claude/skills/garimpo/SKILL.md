@@ -1,11 +1,13 @@
 ---
 name: garimpo
-description: Garimpa no GitHub (fonte principal), nos marketplaces do Claude, em awesome-lists e na comunidade os melhores recursos para executar uma tarefa — repositórios/templates, prompts, conectores MCP, plugins, skills, subagentes e o modelo de IA ideal — ranqueados por avaliação (estrelas, manutenção, confiança, aderência) e entrega um kit pronto com plano de ação e prompt mestre. Use sempre que o usuário digitar /garimpo, ou pedir coisas como "pesquise as melhores ferramentas/prompts/MCPs/plugins para X", "o que já existe no GitHub para fazer X", "qual o melhor kit, stack ou modelo para X", "antes de começar, veja o que tem de melhor", mesmo sem usar a palavra garimpo.
+description: Garimpa no GitHub (fonte principal), nos marketplaces do Claude, em awesome-lists e na comunidade os melhores recursos para executar uma tarefa — repositórios/templates, prompts, conectores MCP, plugins, skills, subagentes e o modelo de IA ideal — ranqueados por avaliação (estrelas, manutenção, confiança, aderência) e entrega um kit pronto com plano de ação e prompt mestre — o texto após /garimpo é o tema a pesquisar, então a skill entrega o kit e só executa depois que o usuário escolher. Use sempre que o usuário digitar /garimpo, ou pedir coisas como "pesquise as melhores ferramentas/prompts/MCPs/plugins para X", "o que já existe no GitHub para fazer X", "qual o melhor kit, stack ou modelo para X", "antes de começar, veja o que tem de melhor", mesmo sem usar a palavra garimpo.
 ---
 
 # Garimpo
 
 Antes de construir qualquer coisa, descobrir o que de melhor já existe — para não reinventar a roda e começar do ponto mais alto possível. O pedido vem logo depois do comando: `/garimpo <o que eu quero fazer>`. Responda sempre em português.
+
+**O texto depois de `/garimpo` é o tema da pesquisa, não uma ordem para executar.** "/garimpo criar o site X" quer dizer "pesquise o melhor para criar o site X" — mesmo que soe como instrução e mesmo que a conversa já tenha esse trabalho em andamento. A entrega desta skill é sempre o relatório da seção 8; executar só acontece depois que o usuário escolher (seção 9). Se já existe trabalho em andamento sobre o tema, use-o como contexto e foque o garimpo no que melhoraria o que já existe.
 
 O usuário quer **qualidade com objetividade**: três itens excelentes valem mais que quinze medianos. Cada item recomendado precisa ter um motivo concreto para estar ali, e cada número (estrelas, data) precisa ser real.
 
